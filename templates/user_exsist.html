@@ -1,0 +1,37 @@
+{% extends "signup.html" %}
+{% block content %}
+<style>
+
+</style>
+<div class="card bg-layer" style="font-family: Arial Rounded MT;">
+    <div class="front-layer" style="display:flex; flex-direction:column;">
+        <p>
+            <div style="color: whitesmoke; font-size: large;">{{ email }}</div>
+            <div
+            style="
+            position: relative; 
+            margin-left: 5%; 
+            font-size: xx-large; 
+            width: 50%;
+            font-smooth: auto;
+            text-rendering: optimizeLegibility !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important; 
+            ">
+                is already registered try to
+                <a href="{{url_for('login')}}" style="color: aliceblue; font-size: xx-large;">LOGIN</a>
+            </div>
+        </p>
+        <button
+            class="btn" 
+            style="
+            position: relative; 
+            right: 10%; 
+            bottom: -10%;"
+            onclick="history.back()"
+        >
+            Back
+        </button>
+    </div>
+</div>
+{% endblock %}

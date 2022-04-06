@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<!--            pallete 
+    filter: https://codepen.io/sosuke/pen/Pjoqqp
+    https://colorhunt.co/palette/0820322c394b334756ff4c29 -->
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="card bg-layer">
+        <div class="front-layer">
+            <form class="form" autocomplete="off" method="post">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <div class="wrap-pass" id="Email">
+                        <img class="img-email" src="{{ url_for('static', filename='Svg/sms.svg') }}" alt="mail img" />
+                        <input type="email" placeholder="Email" id="email" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <div class="wrap-pass" id="Passwd">
+                        <img class="img-pass" src="{{ url_for('static', filename='Svg/key.svg') }}" alt="pass img" />
+                        <input type="password" placeholder="Password" id="passwd" class="form-control" />
+                    </div>
+
+                </div>
+
+                <!-- 2 column grid layout for inline styling -->
+                <div class="col mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                            <label class="form-check-label" for="form1Example3"> Remember me </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col" style="color: white; font-size: 16px;">
+                        <!-- Simple link -->
+                        Forgot password?
+                        <a style="color: #082032;" href="#!">click here.</a>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <div class="btn-wrap">
+                    <button style="width: 110px;" name="signup" value="tosignup" class="btn signup">
+                        Create one
+                    </button>
+                    <button type="submit" class="btn">Sign in</button>
+                </div>
+                <div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+
+</body>

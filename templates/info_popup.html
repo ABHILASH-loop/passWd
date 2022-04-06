@@ -1,0 +1,85 @@
+<!-- https://www.youtube.com/watch?v=wxz5vJ1BWrc
+https://www.etutorialspoint.com/index.php/295-how-to-convert-mysql-query-result-to-json-in-python -->
+
+{% extends "home.html" %} {% block popup %} HELLO
+<div class="container mt-5">
+    <!--           MODAL            -->
+
+    <div class="modal fade" id="popup-info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <form class="form mx-auto my-auto" autocomplete="off" method="post">
+                    <div class="modal-header">
+                        <input type="text" value="{{ data[0] }}" name="webname" class="form-control website-title shadow-none" style="font-size: xx-large;">
+                        <button class="btn btn-c" id="delete-btn"><i class='bx bxs-trash-alt'></i></button>
+                    </div>
+
+                    <!--        USERid INPUT    -->
+
+                    <div class="form-outline mb-4 my-4">
+                        <div class="wrap-pass" id="Email">
+                            <i class='bx bxs-user mx-3 my-3'></i>
+                            <input type="userid" id="userid" name="userid" value="{{ data[1] }}" placeholder="{{ placeholder[0] }}" class="form-control input-info shadow-none" />
+                            <button class="btn clipboard-btn shadow-none" type="button" id="clip-user">
+                                <i class='bx bx-clipboard' id="clip-user-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--     PASSWORD INPUT   -->
+                    <div class="form-outline mb-4">
+                        <div class="wrap-pass" id="Passwd">
+                            <i class='bx bxs-lock-alt mx-3 my-3'></i>
+                            <input type="password" value="{{ data[2] }}" id="passwd" name="passwd" placeholder="{{ placeholder[1] }}" class="form-control input-info shadow-none" />
+                            <button class="btn clipboard-btn shadow-none" id="clip-passwd" type="button">
+                                <i class='bx bx-clipboard' style="font-weight: 900;"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" name="submit" id="submit-btn" class="btn btn-c shadow-none" data-bs-dismiss="modal"> {{ submit }}
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block clip_script %}
+<script>
+    $('#submit-btn').on('click', () => {
+        var webname = $('#webname').val();
+        var userid = $("#userid").val();
+        var passwd = $("#passwd").val();
+        window.location.href = "{{ url_for( 'addDetails', web_name= '${webname}', user_id='${userid}', passwd='${passwd}')}};"
+    })
+
+    if ("{{ disable }}" == "False") {
+        var userid_copy = document.getElementById("userid")
+        document.querySelector('#clip-user').addEventListener('click', () => {
+            navigator.clipboard.writeText(userid_copy.value)
+        })
+        var passwd_copy = document.getElementById("passwd")
+        document.querySelector("#clip-passwd").addEventListener('click', () => {
+            navigator.clipboard.writeText(passwd_copy.value)
+        })
+    } else {
+        $(".clipboard-btn").prop("disabled", true);
+        $("#delete-btn").hide()
+    }
+
+
+    var myModal = new bootstrap.Modal(document.getElementById("popup-info"));
+
+    if ("{{ show }}" == "True") {
+        var id = $(this).attr('id'); // $(this) refers to button that was clicked
+        myModal.show();
+        $('.popup-trigger').hide();
+
+    }
+</script>
+
+{% endblock %}
